@@ -31,7 +31,17 @@
 </head>
 <body>
     <div class="fullscreen-bg">
-        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/actual.jpg" alt="Imagen desde GitHub">
+        <img id="bg-image" src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/actual.jpg" alt="Imagen desde GitHub">
     </div>
+
+    <script>
+        // Función para recargar la página cada 5 minutos
+        function reloadPage() {
+            location.reload();
+        }
+
+        // Llama a la función reloadPage cada 5 minutos (300,000 milisegundos)
+        setInterval(reloadPage, 300000);
+    </script>
 </body>
 </html>
