@@ -9,6 +9,7 @@
         margin: 0;
         padding: 0;
         height: 100%;
+        width: 100%;
         overflow: hidden;
     }
 
@@ -24,7 +25,7 @@
 
     .fullscreen-bg img {
         position: absolute;
-        width: 100%;
+        width: 100vw;
         height: auto;
         object-fit: cover;
         opacity: 0;
@@ -48,6 +49,16 @@
     </div>
 
     <script>
+        // Ajusta el tamaño de la página al tamaño de la pantalla
+        function adjustSize() {
+            document.querySelector('.fullscreen-bg').style.width = window.innerWidth + 'px';
+            document.querySelector('.fullscreen-bg').style.height = window.innerHeight + 'px';
+        }
+
+        // Llama a la función de ajuste de tamaño al cargar la página y cuando la ventana cambie de tamaño
+        window.onload = adjustSize;
+        window.onresize = adjustSize;
+
         var images = document.querySelectorAll('.fullscreen-bg img');
         var currentImageIndex = 0;
 
