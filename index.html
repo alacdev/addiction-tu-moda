@@ -23,25 +23,48 @@
     }
 
     .fullscreen-bg img {
+        position: absolute;
         width: 100%;
         height: 100%;
         object-fit: cover;
+        opacity: 0;
+        transition: opacity 1s ease-in-out;
+    }
+
+    .fullscreen-bg img.active {
+        opacity: 1;
     }
 </style>
 </head>
 <body>
     <div class="fullscreen-bg">
-        <img id="bg-image" src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/actual.jpg" alt="Imagen desde GitHub">
+        <img class="active" src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/pri-ma-ve-ra.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/chaqueta-negra.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/chaqueta-verde.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/camiseta-amarilla.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/camiseta-azul.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/camiseta-rosa.jpg">
+        <img src="https://raw.githubusercontent.com/alacdev/addiction-tu-moda/master/Img/camiseta-verde.jpg">
     </div>
 
     <script>
-        //Función para recargar la página cada 5 minutos
-        function reloadPage() {
-            location.reload()
+        var images = document.querySelectorAll('.fullscreen-bg img');
+        var currentImageIndex = 0;
+
+        function showNextImage() {
+            images[currentImageIndex].classList.remove('active');
+            currentImageIndex = (currentImageIndex + 1) % images.length;
+            images[currentImageIndex].classList.add('active');
         }
 
-        //Llama a la función cada 5 minutos (300,000 milisegundos)
-        setInterval(reloadPage, 300000);
+        setInterval(showNextImage, 10000);
+
+        function reloadPage() {
+            location.reload(); 
+        }
+        
+        // Recarga la página cada 10 minutos (600,000 milisegundos)
+        setInterval(reloadPage, 600000); 
     </script>
 </body>
 </html>
